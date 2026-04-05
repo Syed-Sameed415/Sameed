@@ -579,11 +579,8 @@
           be compact enough to fit in a backpack.
         </p>
         <p class="body-text">
-          Our team of five took this from a sketch on paper through material research, 
-          nitrogen sparging experiments, multiple frother prototypes, and finally to a 
-          working proof-of-concept — a <strong>320W resistive heater</strong> paired with a 
-          <strong>5V DC whisk motor</strong>, controlled by an Arduino, housed in a 
-          custom 3D-printed PLA enclosure.
+          Our team of five took this from a sketch to a working prototype—a 320W heater 
+          and a 5V whisk motor, controlled by an Arduino, all in a 3D-printed enclosure.
         </p>
         <div class="callout">
           <strong>Key Achievement:</strong> The final prototype heated 250mL of milk in under 
@@ -642,19 +639,17 @@
       <div>
         <p class="body-text">
           Existing portable milk frothers either sacrifice consistency for size, or require 
-          professional-grade steam equipment that's neither portable nor affordable. 
-          Tenebris needed a solution that matched their brand values: 
-          <strong>portable, sustainable, and café-quality</strong>.
+          professional grade steam equipment that's neither portable or affordable.
         </p>
         <p class="body-text">
-          The initial scope required us to use <strong>nitrogen gas</strong> from their 
-          pressurized espresso cans to froth the milk — an exciting but technically demanding 
+          The initial scope required us to use nitrogen gas from their 
+          pressurized espresso cans to froth the milk — a technically demanding 
           constraint that would ultimately reshape our entire design process.
         </p>
         <div class="callout">
           <strong>Primary Objectives:</strong> Heat 250mL of milk to 60°C in under 5 minutes · 
-          Produce café-quality microfoam · Fit within a large-thermos form factor (13×30cm) · 
-          Remain food-safe and portable.
+          Produce café quality microfoam · Fit within a large-thermos form factor (13×30cm) · 
+          Remain food safe and portable.
         </div>
       </div>
       <div>
@@ -800,11 +795,6 @@
         </tr>
       </tbody>
     </table>
-    <p style="font-size:0.78rem;color:var(--muted);margin-top:0.5rem;">
-      * Nitrogen sparging produced excellent foam in theory but required 120 psi — far beyond 
-      what aluminium beverage cans can safely contain, especially when milk temperature reduces 
-      gas solubility and increases pressure demands.
-    </p>
   </section>
 
   <!-- FINAL DESIGN -->
@@ -815,22 +805,20 @@
       <div>
         <p class="body-text">
           The final prototype is a cylindrical device (12×28cm) consisting of four main 
-          subsystems: a <strong>stainless steel milk container</strong>, a 
-          <strong>PLA 3D-printed outer housing and lid</strong>, a 
-          <strong>resistive heating element</strong>, and a <strong>DC frother motor 
-          with Arduino controller</strong>.
+          subsystems: a stainless steel milk container, a 
+          PLA 3D-printed outer housing and lid, a 
+          resistive heating element, and a DC frother motor 
+          with Arduino controller.
         </p>
         <p class="body-text">
           A critical design insight came from earlier prototypes where the heater 
           was placed inside the cup — causing milk to burn on the element. The final design 
-          <strong>places the heater on the exterior bottom surface</strong> of the stainless 
+          places the heater on the exterior bottom surface of the stainless 
           cup, preventing direct milk contact while maintaining efficient heat transfer.
         </p>
         <p class="body-text">
-          The control scheme is deliberately simple: <strong>feedforward-only</strong>, 
-          with no sensors. Heating time and froth duration are set from empirical testing. 
-          This eliminates sensor failure modes and keeps the interface to two buttons 
-          — one for heat, one for froth.
+          The control system is simple: no sensors, just preset heating and frothing
+          times based on testing. This reduces failure points and uses only two buttons, one for heat and one for frothing.
         </p>
         <div class="callout">
           <strong>Design Insight:</strong> Heater positioned on the exterior of the 
@@ -986,22 +974,19 @@
     <div class="two-col">
       <div>
         <p class="body-text">
-          This project taught us that <strong>client requirements are living documents</strong>. 
-          Our scope shifted three times — from nitrogen sparging prototype, to research-only mode, 
-          back to a functioning device. Navigating these pivots without losing engineering rigour 
-          was the real challenge.
+          This project showed us that client requirements change. Our scope shifted three times, 
+          and the real challenge was adapting without losing engineering quality.
         </p>
         <p class="body-text">
-          We also learned that <strong>foam science resists calculation</strong>. Unlike heating, 
+          We also learned that foam science resists calculation. Unlike heating, 
           which we could model precisely, foam formation depended on milk protein concentration, 
           fat content, temperature, and bubble dynamics in ways that only empirical testing could 
-          resolve. The nitrogen frothing hypothesis was mathematically sound but physically 
-          constrained by the available can pressure.
+          accurately.
         </p>
         <p class="body-text">
-          Finally, placing the heater outside the cup — discovered by failing with an internal 
-          heater — was a reminder that <strong>failure is a data point, not a setback</strong>. 
-          Each burnt-milk test run informed a better placement decision.
+          Finally, placing the heater outside the cup, discovered by failing with an internal 
+          heater, was a reminder that failure is data that you use for future iterations and not neccesarily a setback. 
+          Each burnt milk test run informed a better placement decision.
         </p>
       </div>
       <div>
