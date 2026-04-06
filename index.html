@@ -1,808 +1,463 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Syed Sameed — Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <title>Syed Sameed</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg: #0a0a0a;
-      --surface: #111111;
-      --card: #161616;
-      --border: #2a2a2a;
-      --accent: #c8a96e;
-      --accent2: #7eb8c9;
-      --text: #e8e4dc;
-      --muted: #888;
-      --serif: 'Playfair Display', Georgia, serif;
-      --mono: 'DM Mono', monospace;
-      --sans: 'DM Sans', sans-serif;
+      --bg: #0f0f0f;
+      --surface: #161616;
+      --border: #262626;
+      --accent: #c9a96e;
+      --text: #ddd8ce;
+      --muted: #7a7672;
+      --serif: 'Lora', Georgia, serif;
+      --mono: 'IBM Plex Mono', monospace;
+      --sans: 'IBM Plex Sans', sans-serif;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       background: var(--bg);
       color: var(--text);
       font-family: var(--sans);
       font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
+      line-height: 1.75;
     }
-
+ 
     /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 3rem;
-      background: rgba(10,10,10,0.85);
-      backdrop-filter: blur(12px);
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 10;
     }
-    .nav-logo {
+    .nav-name {
       font-family: var(--mono);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--accent);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
       text-decoration: none;
+      letter-spacing: 0.04em;
     }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
     .nav-links a {
       font-family: var(--mono);
       font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
       color: var(--muted);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color 0.15s;
     }
-    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      position: relative;
-      overflow: hidden;
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--text); }
+ 
+    /* MAIN */
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 5rem 2rem 6rem;
     }
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 8rem 4rem 4rem 6rem;
-      position: relative;
-      z-index: 2;
+ 
+    /* INTRO */
+    .intro {
+      margin-bottom: 4rem;
     }
-    .hero-tag {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .hero-tag::before {
-      content: '';
-      width: 2rem;
-      height: 1px;
-      background: var(--accent);
-    }
-    .hero-name {
-      font-family: var(--serif);
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      font-weight: 900;
-      line-height: 1.05;
-      margin-bottom: 1.5rem;
-      color: var(--text);
-    }
-    .hero-name em {
-      font-style: italic;
-      color: var(--accent);
-    }
-    .hero-desc {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 420px;
-      margin-bottom: 2.5rem;
-      line-height: 1.8;
-    }
-    .hero-cta {
-      display: flex; gap: 1rem; flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.75rem;
-      border-radius: 2px;
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: #000;
-      border: 1px solid var(--accent);
-    }
-    .btn-primary:hover { background: #b89458; border-color: #b89458; }
-    .btn-ghost {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
-
-    .hero-right {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .hero-graphic {
-      position: absolute;
-      inset: 0;
-      opacity: 0.15;
-    }
-    .hero-placeholder {
-      width: 280px;
-      height: 340px;
-      border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      position: relative;
-      z-index: 2;
-      background: var(--card);
-    }
-    .hero-placeholder svg { opacity: 0.4; }
-    .hero-placeholder span {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      text-align: center;
-    }
-    .corner-tag {
-      position: absolute;
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      padding: 0.2rem 0.4rem;
-      border: 1px solid var(--accent);
-    }
-    .corner-tag.tl { top: -1px; left: -1px; }
-    .corner-tag.br { bottom: -1px; right: -1px; }
-
-    /* GRID DECORATION */
-    .grid-lines {
-      position: absolute;
-      inset: 0;
-      background-image: 
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 60px 60px;
-      opacity: 0.3;
-    }
-
-    /* SCROLL INDICATOR */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 6rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .scroll-line {
-      width: 2px;
-      height: 3rem;
-      background: linear-gradient(to bottom, var(--accent), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 1; transform: scaleY(1); }
-      50% { opacity: 0.4; transform: scaleY(0.6); }
-    }
-
-    /* STATS BAR */
-    .stats-bar {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-    .stat-item {
-      padding: 2rem;
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-    .stat-item:last-child { border-right: none; }
-    .stat-num {
-      font-family: var(--serif);
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-    }
-    .stat-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* SECTIONS */
-    section { padding: 6rem 6rem; }
-    .section-tag {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .section-tag::before {
-      content: '';
-      width: 1.5rem;
-      height: 1px;
-      background: var(--accent);
-    }
-    .section-title {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 3rem;
-      color: var(--text);
-    }
-
-    /* ABOUT SECTION */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-    .about-text p {
-      color: var(--muted);
-      font-size: 0.97rem;
-      line-height: 1.9;
-      margin-bottom: 1.2rem;
-    }
-    .about-text p strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-    .about-sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .info-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 1.5rem;
-    }
-    .info-card h4 {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-    .info-card p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* SKILLS */
-    .skills-section { background: var(--surface); }
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    .skill-group {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      transition: border-color 0.2s;
-    }
-    .skill-group:hover { border-color: var(--accent); }
-    .skill-group h4 {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.2rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .skill-tag {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      padding: 0.25rem 0.6rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-
-    /* PROJECTS PREVIEW */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-    .project-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      text-decoration: none;
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      transition: all 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-    .project-card::before {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
-    }
-    .project-card:hover { border-color: var(--border); transform: translateY(-2px); }
-    .project-card:hover::before { transform: scaleX(1); }
-    .project-num {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-    }
-    .project-card h3 {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      font-weight: 700;
-      line-height: 1.3;
-    }
-    .project-card p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.7;
-      flex: 1;
-    }
-    .project-tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.5rem;
-    }
-    .ptag {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      padding: 0.15rem 0.5rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--muted);
-    }
-    .featured-badge {
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      background: var(--accent);
-      color: #000;
-      padding: 0.15rem 0.5rem;
-      align-self: flex-start;
-    }
-
-    /* CONTACT */
-    .contact-section { background: var(--surface); }
-    .contact-inner {
-      max-width: 700px;
-    }
-    .contact-inner p {
-      font-size: 1rem;
-      color: var(--muted);
-      margin-bottom: 2rem;
-      line-height: 1.9;
-    }
-    .contact-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 3rem;
-    }
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem 1.5rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      text-decoration: none;
-      color: var(--text);
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.05em;
-      transition: all 0.2s;
-    }
-    .contact-item:hover { border-color: var(--accent); color: var(--accent); }
-    .contact-item svg { flex-shrink: 0; }
-
-    /* CERTIFICATIONS */
-    .cert-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
-    .cert-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 1.25rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      font-size: 0.85rem;
-    }
-    .cert-dot {
-      width: 6px; height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .cert-name { color: var(--text); flex: 1; }
-    .cert-date {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--muted);
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 2rem 6rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    footer p {
+    .intro-label {
       font-family: var(--mono);
       font-size: 0.7rem;
       color: var(--muted);
       letter-spacing: 0.08em;
+      margin-bottom: 1.25rem;
     }
-
-    /* ANIMATIONS */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.7s ease forwards;
+    .intro h1 {
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--text);
     }
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
+    .intro h1 em {
+      font-style: italic;
+      color: var(--accent);
     }
-    .fade-in:nth-child(1) { animation-delay: 0.1s; }
-    .fade-in:nth-child(2) { animation-delay: 0.25s; }
-    .fade-in:nth-child(3) { animation-delay: 0.4s; }
-    .fade-in:nth-child(4) { animation-delay: 0.55s; }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 1.5rem; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-left { padding: 7rem 2rem 3rem; }
-      .hero-right { display: none; }
-      section { padding: 4rem 2rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .skills-grid, .projects-grid { grid-template-columns: 1fr; }
-      .stats-bar { grid-template-columns: 1fr 1fr; }
-      footer { padding: 2rem; flex-direction: column; gap: 0.75rem; }
+    .intro p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+    .intro p strong { color: var(--text); font-weight: 500; }
+ 
+    /* DIVIDER */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+ 
+    /* SECTION */
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+ 
+    /* BIO BLOCK */
+    .bio p {
+      font-size: 0.97rem;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+    .bio p strong { color: var(--text); font-weight: 500; }
+    .bio p:last-child { margin-bottom: 0; }
+ 
+    /* DETAILS ROW */
+    .details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .detail-item {}
+    .detail-item dt {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+    .detail-item dd {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+ 
+    /* SKILLS */
+    .skill-row {
+      margin-bottom: 1.25rem;
+    }
+    .skill-row dt {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .skill-row dd {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+ 
+    /* PROJECTS */
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .project-item {
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .project-item:hover { border-color: var(--accent); }
+    .project-item h3 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+    .project-item p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+    .project-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      padding: 0.15rem 0.5rem;
+      border: 1px solid var(--border);
+    }
+    .tag.featured { color: var(--accent); border-color: var(--accent); }
+ 
+    /* CERTS */
+    .cert-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .cert-list li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .cert-list li span:first-child { color: var(--text); }
+    .cert-list li span:last-child {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      flex-shrink: 0;
+    }
+ 
+    /* CONTACT */
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .contact-links a {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .contact-links a:hover { color: var(--accent); }
+    .contact-links a::before {
+      content: '→';
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+    }
+ 
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+    }
+ 
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      main { padding: 3rem 1.25rem 4rem; }
+      .details { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 0.5rem; }
     }
   </style>
 </head>
 <body>
-
-  <nav>
-    <a href="index.html" class="nav-logo">SS / Portfolio</a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">About</a></li>
-      <li><a href="project.html">Project</a></li>
-      <li><a href="reflection.html">Reflection</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="grid-lines"></div>
-    <div class="hero-left">
-      <div class="hero-tag fade-in">Electrical Engineering · UBC</div>
-      <h1 class="hero-name fade-in">Syed<br/><em>Sameed</em></h1>
-      <p class="hero-desc fade-in">
-        Biomedical-focused electrical engineer with a passion for bridging 
-        hardware design, embedded systems, and human-centered solutions. 
-        Graduating May 2026 from UBC's School of Engineering.
+ 
+<nav>
+  <a href="index.html" class="nav-name">Syed Sameed</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">About</a></li>
+    <li><a href="project.html">Project</a></li>
+    <li><a href="reflection.html">Reflection</a></li>
+  </ul>
+</nav>
+ 
+<main>
+ 
+  <div class="intro">
+    <p class="intro-label">ePortfolio · ENGR 499 · UBC 2026</p>
+    <h1>Hi, I'm Syed —<br/><em>electrical engineer</em><br/>with a biomedical focus.</h1>
+    <p>
+      I'm finishing my Bachelor of Applied Science in Electrical Engineering at UBC's Okanagan campus, 
+      graduating May 2026. My concentration is in <strong>biomedical engineering</strong>, 
+      and I'm interested in the kind of work that sits at the edge of hardware and human health.
+    </p>
+    <p>
+      Based in Vernon, BC. Open to opportunities in medical devices, embedded systems, 
+      and hardware design.
+    </p>
+  </div>
+ 
+  <hr/>
+ 
+  <!-- BIO -->
+  <div class="bio" style="margin-bottom:3rem;">
+    <p class="section-label">Background</p>
+    <div class="bio">
+      <p>
+        My path through engineering has taken me across circuit design, MEMS fabrication, 
+        control systems, soft robotics, and — most recently — a capstone project building a 
+        portable milk heating and frothing device for a real Kelowna coffee company.
       </p>
-      <div class="hero-cta fade-in">
-        <a href="project.html" class="btn btn-primary">View Capstone Project →</a>
-        <a href="mailto:syedsameed16@gmail.com" class="btn btn-ghost">Get in Touch</a>
-      </div>
-    </div>
-    <div class="hero-right">
-      <div class="hero-placeholder">
-        <div class="corner-tag tl">01</div>
-        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="32" cy="22" r="14" stroke="#c8a96e" stroke-width="1.5"/>
-          <path d="M18 52c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        <span>Photo coming soon</span>
-        <div class="corner-tag br">BASc</div>
-      </div>
-    </div>
-    <div class="scroll-indicator">
-      <div class="scroll-line"></div>
-      Scroll
-    </div>
-  </section>
-
-  <!-- STATS BAR -->
-  <div class="stats-bar">
-    <div class="stat-item">
-      <div class="stat-num">4+</div>
-      <div class="stat-label">Years at UBC</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">3</div>
-      <div class="stat-label">FESTO Certifications</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">5+</div>
-      <div class="stat-label">Technical Projects</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">BME</div>
-      <div class="stat-label">Concentration</div>
+      <p>
+        I like problems that don't have one obvious answer. The work I find most rewarding 
+        involves making something tangible, testing it, watching it fail, and figuring out why. 
+        That iteration loop — build, test, learn, repeat — is what draws me to 
+        <strong>prototype-heavy, hands-on engineering</strong>.
+      </p>
+      <p>
+        Outside the technical side, I care about clear communication and working well in teams 
+        where people bring genuinely different perspectives. My background also includes 
+        certifications in industrial PLCs and robotics, which has given me exposure to 
+        automation and manufacturing environments beyond the university lab.
+      </p>
     </div>
   </div>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-tag">Who I Am</div>
-    <h2 class="section-title">Engineering And<br/>Medicine.</h2>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>
-          I'm a fourth-year Electrical Engineering student (Biomedical Concentration) at the University of British Columbia. My 
-          academic journey has taken me across circuit design, embedded systems, MEMS fabrication, 
-          control systems, and bioinstrumentation.
-        </p>
-        <p>
-          Based in Vernon, BC, I've worked on everything from industrial PCB 
-          design with real manufacturing constraints, to soft robotics and MEMS actuators, to 
-          consumer health adjacent devices. I thrive in interdisciplinary teams where engineering, 
-          biology, and user experience collide.
-        </p>
-        <p>
-          My career aspiration is to contribute to the development of medical devices 
-          and biomedical instrumentation. I'm drawn to roles where my electrical engineering foundation 
-          supports meaningful clinical or quality-of-life outcomes.
-        </p>
-        <p>
-          Outside the lab, I value clear communication, structured problem-solving, and the kind 
-          of teamwork that makes iteration genuinely productive. I hold certifications in 
-          industrial PLCs and robotics, and I'm comfortable working from schematic to 
-          prototype to validation.
-        </p>
-      </div>
-      <div class="about-sidebar">
-        <div class="info-card">
-          <h4>Education</h4>
-          <p><strong style="color:var(--text)">BASc — Electrical Engineering</strong><br/>
-          Biomedical Concentration<br/>
-          University of British Columbia<br/>
-          <span style="color:var(--accent)">Graduating May 2026</span></p>
-        </div>
-        <div class="info-card">
-          <h4>Location</h4>
-          <p>Vernon, British Columbia, Canada</p>
-        </div>
-        <div class="info-card">
-          <h4>Interests</h4>
-          <p>Medical device engineering · MEMS & microsystems · Embedded hardware · 
-          Biomedical instrumentation · Sustainable design · Robotics</p>
-        </div>
-        <div class="info-card">
-          <h4>Contact</h4>
-          <p><a href="mailto:syedsameed16@gmail.com" style="color:var(--accent); text-decoration:none">syedsameed16@gmail.com</a><br/>
-          <a href="tel:2368899803" style="color:var(--muted); text-decoration:none">236-889-9803</a></p>
-        </div>
-      </div>
+ 
+  <dl class="details" style="margin-bottom:3rem;">
+    <div class="detail-item">
+      <dt>Degree</dt>
+      <dd>BASc Electrical Engineering<br/>Biomedical Concentration</dd>
     </div>
-  </section>
-
+    <div class="detail-item">
+      <dt>Institution</dt>
+      <dd>University of British Columbia<br/>Graduating May 2026</dd>
+    </div>
+    <div class="detail-item">
+      <dt>Location</dt>
+      <dd>Vernon, BC, Canada</dd>
+    </div>
+    <div class="detail-item">
+      <dt>Interests</dt>
+      <dd>Medical devices, embedded hardware, MEMS, bioinstrumentation</dd>
+    </div>
+  </dl>
+ 
+  <hr/>
+ 
   <!-- SKILLS -->
-  <section class="skills-section">
-    <div class="section-tag">Technical Toolkit</div>
-    <h2 class="section-title">Skills &amp; Technologies</h2>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <h4>Software &amp; Tools</h4>
-        <div class="skill-tags">
-          <span class="skill-tag">KiCad</span>
-          <span class="skill-tag">SolidWorks</span>
-          <span class="skill-tag">AutoCAD</span>
-          <span class="skill-tag">MATLAB</span>
-          <span class="skill-tag">Power BI</span>
-          <span class="skill-tag">AWS IoT</span>
-          <span class="skill-tag">TIA Portal</span>
-          <span class="skill-tag">CIROS</span>
-        </div>
+  <div style="margin-bottom:3rem;">
+    <p class="section-label">Skills</p>
+    <dl>
+      <div class="skill-row">
+        <dt>Software & Tools</dt>
+        <dd>KiCad · SolidWorks · AutoCAD · MATLAB · Power BI · AWS IoT · TIA Portal</dd>
       </div>
-      <div class="skill-group">
-        <h4>Programming</h4>
-        <div class="skill-tags">
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">C++</span>
-          <span class="skill-tag">Verilog</span>
-          <span class="skill-tag">ARM Assembly</span>
-          <span class="skill-tag">PLC / Ladder Logic</span>
-          <span class="skill-tag">IEC 61131-3</span>
-          <span class="skill-tag">Structured Text</span>
-        </div>
+      <div class="skill-row">
+        <dt>Programming</dt>
+        <dd>Python · C++ · Verilog · ARM Assembly · PLC / Ladder Logic · Structured Text</dd>
       </div>
-      <div class="skill-group">
-        <h4>Engineering Domains</h4>
-        <div class="skill-tags">
-          <span class="skill-tag">PCB Design</span>
-          <span class="skill-tag">Bioinstrumentation</span>
-          <span class="skill-tag">MEMS</span>
-          <span class="skill-tag">Control Systems</span>
-          <span class="skill-tag">VLSI Systems</span>
-          <span class="skill-tag">Circuit Theory</span>
-          <span class="skill-tag">Power Systems</span>
-          <span class="skill-tag">Soft Robotics</span>
-        </div>
+      <div class="skill-row">
+        <dt>Engineering</dt>
+        <dd>PCB Design · MEMS · Bioinstrumentation · Control Systems · VLSI · Circuit Theory · Power Systems</dd>
       </div>
-    </div>
-
-    <!-- Certifications -->
-    <div style="margin-top:3rem;">
-      <div class="section-tag">Credentials</div>
-      <h3 style="font-family:var(--serif);font-size:1.5rem;margin-bottom:1.5rem;">Certifications</h3>
-      <div class="cert-list">
-        <div class="cert-item">
-          <div class="cert-dot"></div>
-          <span class="cert-name">Fundamentals of PLCs — FESTO NC3</span>
-          <span class="cert-date">Apr 2023</span>
-        </div>
-        <div class="cert-item">
-          <div class="cert-dot"></div>
-          <span class="cert-name">Applied PLCs — FESTO NC3</span>
-          <span class="cert-date">Apr 2023</span>
-        </div>
-        <div class="cert-item">
-          <div class="cert-dot"></div>
-          <span class="cert-name">Fundamentals of Robotics — FESTO NC3</span>
-          <span class="cert-date">Apr 2023</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS PREVIEW -->
-  <section id="projects">
-    <div class="section-tag">Work</div>
-    <h2 class="section-title">Selected Projects</h2>
-    <div class="projects-grid">
-      <a href="project.html" class="project-card">
-        <span class="featured-badge">Featured</span>
-        <span class="project-num">01</span>
-        <h3>LEA 2.0 — Portable Milk Frother</h3>
-        <p>ENGR 499 Capstone. Designed a portable milk heating and frothing device for Tenebris Coffee, featuring a 320W resistive heater, DC whisk motor, and Arduino control interface.</p>
-        <div class="project-tag-row">
-          <span class="ptag">Capstone</span>
-          <span class="ptag">Hardware</span>
-          <span class="ptag">Arduino</span>
+    </dl>
+  </div>
+ 
+  <hr/>
+ 
+  <!-- PROJECTS -->
+  <div style="margin-bottom:3rem;">
+    <p class="section-label">Selected Projects</p>
+    <div class="project-list">
+      <a href="project.html" class="project-item">
+        <h3>LEA 2.0 — Portable Milk Frother &amp; Heater</h3>
+        <p>
+          Capstone project for Tenebris Coffee. Designed and built a portable device that heats 
+          250mL of milk to 60°C and produces café-quality foam — with a 320W heater, DC whisk motor, 
+          and Arduino controller in a custom 3D-printed enclosure.
+        </p>
+        <div class="project-tags">
+          <span class="tag featured">Capstone · ENGR 499</span>
+          <span class="tag">Arduino</span>
+          <span class="tag">Hardware</span>
+          <span class="tag">Food Engineering</span>
         </div>
       </a>
-      <a href="#" class="project-card">
-        <span class="project-num">02</span>
+      <div class="project-item">
         <h3>Industrial Thermostat PCB</h3>
-        <p>Reverse-engineered an existing reference board and designed a functional two-layer PCB in KiCad with real-world routing and reliability constraints.</p>
-        <div class="project-tag-row">
-          <span class="ptag">PCB</span>
-          <span class="ptag">KiCad</span>
-          <span class="ptag">Hardware</span>
+        <p>
+          Reverse-engineered a reference board and designed a two-layer PCB in KiCad under 
+          real-world size, routing, and reliability constraints. Handled soldering, layout 
+          optimisation, and validation testing.
+        </p>
+        <div class="project-tags">
+          <span class="tag">PCB Design</span>
+          <span class="tag">KiCad</span>
+          <span class="tag">Hardware</span>
         </div>
-      </a>
-      <a href="#" class="project-card">
-        <span class="project-num">03</span>
-        <h3>MEMS Stacked Chevron Actuator</h3>
-        <p>Studied whether stacked chevron actuator configurations produce greater displacement than a standard single-tier design using an in-house SU-8 fabrication process.</p>
-        <div class="project-tag-row">
-          <span class="ptag">MEMS</span>
-          <span class="ptag">ENGR 406</span>
-          <span class="ptag">Fabrication</span>
-        </div>
-      </a>
-    </div>
-    <a href="project.html" class="btn btn-ghost">View Full Capstone Entry →</a>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact-section" id="contact">
-    <div class="contact-inner">
-      <div class="section-tag">Get in Touch</div>
-      <h2 class="section-title">Let's Connect</h2>
-      <p>
-        I'm currently exploring full-time opportunities in biomedical engineering, hardware design, 
-        and embedded systems. If you're working on something that intersects people and technology, 
-        I'd love to hear from you.
-      </p>
-      <div class="contact-links">
-        <a href="mailto:syedsameed16@gmail.com" class="contact-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-          syedsameed16@gmail.com
-        </a>
-        <a href="tel:2368899803" class="contact-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.26h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          236-889-9803
-        </a>
-        <a href="https://github.com" class="contact-item" target="_blank">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          GitHub Profile
-        </a>
       </div>
-      <a href="project.html" class="btn btn-primary">View My Capstone Project →</a>
+      <div class="project-item">
+        <h3>MEMS Stacked Chevron Actuator</h3>
+        <p>
+          Investigated whether stacking chevron actuator tiers increases displacement compared 
+          to a single-layer design, using UBC's in-house 1.5-layer SU-8 fabrication process.
+        </p>
+        <div class="project-tags">
+          <span class="tag">MEMS</span>
+          <span class="tag">ENGR 406</span>
+          <span class="tag">Microfabrication</span>
+        </div>
+      </div>
     </div>
-  </section>
-
-  <footer>
-    <p>© 2026 Syed Sameed · UBC School of Engineering</p>
-    <p>Vernon, BC · syedsameed16@gmail.com</p>
-  </footer>
-
+  </div>
+ 
+  <hr/>
+ 
+  <!-- CERTIFICATIONS -->
+  <div style="margin-bottom:3rem;">
+    <p class="section-label">Certifications</p>
+    <ul class="cert-list">
+      <li>
+        <span>Fundamentals of PLCs — FESTO NC3</span>
+        <span>Apr 2023</span>
+      </li>
+      <li>
+        <span>Applied PLCs — FESTO NC3</span>
+        <span>Apr 2023</span>
+      </li>
+      <li>
+        <span>Fundamentals of Robotics — FESTO NC3</span>
+        <span>Apr 2023</span>
+      </li>
+    </ul>
+  </div>
+ 
+  <hr/>
+ 
+  <!-- CONTACT -->
+  <div>
+    <p class="section-label">Get in Touch</p>
+    <p style="font-size:0.9rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.8;">
+      I'm looking for full-time roles in biomedical engineering, hardware design, or embedded systems. 
+      If you're working on something interesting, feel free to reach out.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:syedsameed16@gmail.com">syedsameed16@gmail.com</a>
+      <a href="tel:2368899803">236-889-9803</a>
+      <a href="https://github.com" target="_blank">GitHub</a>
+    </div>
+  </div>
+ 
+</main>
+ 
+<footer>
+  <p>Syed Sameed · UBC School of Engineering · 2026</p>
+  <p>Vernon, BC</p>
+</footer>
+ 
 </body>
 </html>
